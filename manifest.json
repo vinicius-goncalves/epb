@@ -1,0 +1,40 @@
+{
+	"manifest_version": 3,
+	"name": "Extensão para PEs Brasileiros [EPB]",
+	"version": "1.0.0",
+	"description": "Extensão com ferramentas e melhorias para o sistema interno utilizado por PEs nos fóruns do Google.",
+	"options_page": "src/pages/options/index.html",
+	"permissions": [
+		"storage",
+		"activeTab",
+		"scripting",
+		"tabs",
+		"webRequest",
+		"debugger"
+	],
+	"action": {},
+	"icons": {
+		"64": "icon.png",
+		"128": "icon.png"
+	},
+	"content_scripts": [
+		{
+			"js": ["src/pages/content/index.tsx"],
+			"matches": ["https://support.google.com/*"]
+		}
+	],
+	"background": {
+		"service_worker": "src/pages/background/index.ts",
+		"type": "module"
+	},
+	"web_accessible_resources": [
+		{
+			"resources": ["src/*", "assets/*", "icon.png"],
+			"matches": ["https://support.google.com/*"]
+		}
+	],
+	"host_permissions": [
+		"https://support.google.com/*",
+		"https://www.googleapis.com/youtube/*"
+	]
+}
