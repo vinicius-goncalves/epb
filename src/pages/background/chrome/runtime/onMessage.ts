@@ -28,5 +28,9 @@ chrome.runtime.onMessage.addListener((message: MsgParam, _s, sendResponse) => {
 		});
 	}
 
+	// if(message.action === 'get-preferences') {
+
+	// }
+
 	return true;
 });

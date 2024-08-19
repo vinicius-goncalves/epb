@@ -1,4 +1,5 @@
 import CheckboxInput from '../../../../../components/ui/CheckboxInput';
+import { usePreferenceManager } from '../../../../../hooks';
 import ToolSection from '../../../../content/components/tool-section/ToolSection';
 
 const componentDetails = {
@@ -11,13 +12,15 @@ const componentDetails = {
 };
 
 function ThreadDetectionOption(): JSX.Element {
+	const { isPreferenceActive, togglePreference } = usePreferenceManager('threadDetection');
+
 	return (
-		<ToolSection
-			title={componentDetails.title}
-			description={componentDetails.description}>
-			<>
-				<CheckboxInput text="Detectar threads automaticamente" />
-			</>
+		<ToolSection title={componentDetails.title} description={componentDetails.description}>
+			<CheckboxInput
+				text="Detectar threads automaticamente"
+				checked={isPreferenceActive}
+				onChange={togglePreference}
+			/>
 		</ToolSection>
 	);
 }

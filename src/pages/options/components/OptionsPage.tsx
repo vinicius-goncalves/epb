@@ -4,13 +4,36 @@ import Header from './Header';
 import ToolSection from '../../content/components/tool-section/ToolSection';
 import ToolSectionWrapper from '../../content/components/tool-section/ToolSectionWrapper';
 
+import { usePreferenceManager } from '../../../hooks';
+import ProfileEnhancementOption from './options/enhancements/ProfileEnhancementOption';
+import ThreadEnhancementOption from './options/enhancements/ThreadEnhancementOption';
 import PIIHeightLimitOption from './options/fixes/PIIHeightLimitOption';
 import DefaultForumSelectOption from './options/functions/DefaultForumSelectOption';
 import ThreadDetectionOption from './options/functions/ThreadDetectionOption';
 import ExportCannedResponsesOption from './options/tools/ExportCannedResponsesOption';
 import ExportCreatedFiltersOption from './options/tools/ExportCreatedFiltersOption';
 
+function OptionsPageDescription() {
+	return (
+		<small>
+			Extensão criada por{' '}
+			<a
+				href="https://support.google.com/profile/1062156"
+				rel="noopener noreferrer"
+				className="text-blue-500 hover:underline"
+				target="_blank">
+				Vinícius Gonçalves
+			</a>{' '}
+			com a ajuda de outros PEs.
+		</small>
+	);
+}
+
 function OptionsPage(): JSX.Element {
+	const { isPreferenceActive, togglePreference } = usePreferenceManager('showDebugInformation');
+	const { isPreferenceActive: isAdvancedModeExportActive, togglePreference: toggleAdvancedModeExport } =
+		usePreferenceManager('advancedExportMode');
+
 	return (
 		<div className="m-3">
 			<Header />
@@ -25,18 +48,8 @@ function OptionsPage(): JSX.Element {
 				</ToolSectionWrapper>
 
 				<ToolSectionWrapper title="Melhorias">
-					<ToolSection
-						title="Aprimorar visualização de perfil"
-						description="Os perfis (/user | /profile) serão aprimorados com ainda mais visualizações sobre os
-							vídeos postados, guias criados e outros detalhes sobre um perfil. ">
-						<CheckboxInput text="Aprimorar perfis" />
-					</ToolSection>
-					<ToolSection
-						title="Melhorar visualização no nome de usuários em threads**"
-						description="Ativando essa opção, será corrigido espaçamento no nome de usuários e encurtar textos como &#34;Usuário que fez a postagem original&#34; apenas para &#34;OP&#34;"
-						addedCheckbox={false}>
-						<CheckboxInput text="Melhorar visualizações de nomes de usuários" />
-					</ToolSection>
+					<ThreadEnhancementOption />
+					<ProfileEnhancementOption />
 				</ToolSectionWrapper>
 
 				<ToolSectionWrapper title="Ferramentas">
@@ -47,7 +60,11 @@ function OptionsPage(): JSX.Element {
 							title="Usar modo avançado**"
 							description="Com o modo avançado, será possível filtrar quais respostas baixar, como através de IDs ou respostas que tenham palavras-chaves (tags) inclusas."></ToolSection>
 						<>
-							<CheckboxInput text="Ativar modo avançado" />
+							<CheckboxInput
+								text="Ativar modo avançado"
+								checked={isAdvancedModeExportActive}
+								onChange={toggleAdvancedModeExport}
+							/>
 						</>
 					</ToolSectionWrapper>
 				</ToolSectionWrapper>
@@ -55,23 +72,17 @@ function OptionsPage(): JSX.Element {
 				<ToolSectionWrapper title="For developers">
 					<ToolSection title="Show debug information**">
 						<>
-							<CheckboxInput text="Show debug information" />
+							<CheckboxInput
+								text="Show debug information"
+								checked={isPreferenceActive}
+								onChange={togglePreference}
+							/>
 						</>
 					</ToolSection>
 				</ToolSectionWrapper>
 			</main>
 			<footer className="text-center">
-				<small>
-					Extensão criada por{' '}
-					<a
-						href="https://support.google.com/profile/1062156"
-						rel="noopener noreferrer"
-						className="text-blue-500 hover:underline"
-						target="_blank">
-						Vinícius Gonçalves
-					</a>{' '}
-					com a ajuda de outros PEs.
-				</small>
+				<OptionsPageDescription />
 			</footer>
 		</div>
 	);
