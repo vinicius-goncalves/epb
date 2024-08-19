@@ -1,4 +1,4 @@
-import CheckboxInput from '../../../components/CheckboxInput';
+import CheckboxInput from '../../../components/ui/CheckboxInput';
 import Header from './Header';
 
 import ToolSection from '../../content/components/tool-section/ToolSection';
@@ -26,17 +26,30 @@ function OptionsPage(): JSX.Element {
 
 				<ToolSectionWrapper title="Melhorias">
 					<ToolSection
-						title="Aprimorar visualização de perfil**"
+						title="Aprimorar visualização de perfil"
 						description="Os perfis (/user | /profile) serão aprimorados com ainda mais visualizações sobre os
-							vídeos postados, guias criados e outros detalhes sobre um perfil. ATENÇÃO: Ao ativar esse recurso, poderá aparecer uma informação de debugger na janela do browser,
-							isso é normal pois é necessário interceptar resultado de 'respostas' de requisições (responses from http requests), e essa informação irá aparecer apenas quando você acessar um perfil.">
+							vídeos postados, guias criados e outros detalhes sobre um perfil. ">
 						<CheckboxInput text="Aprimorar perfis" />
+					</ToolSection>
+					<ToolSection
+						title="Melhorar visualização no nome de usuários em threads**"
+						description="Ativando essa opção, será corrigido espaçamento no nome de usuários e encurtar textos como &#34;Usuário que fez a postagem original&#34; apenas para &#34;OP&#34;"
+						addedCheckbox={false}>
+						<CheckboxInput text="Melhorar visualizações de nomes de usuários" />
 					</ToolSection>
 				</ToolSectionWrapper>
 
 				<ToolSectionWrapper title="Ferramentas">
 					<ExportCreatedFiltersOption />
-					<ExportCannedResponsesOption />
+					<ToolSectionWrapper>
+						<ExportCannedResponsesOption />
+						<ToolSection
+							title="Usar modo avançado**"
+							description="Com o modo avançado, será possível filtrar quais respostas baixar, como através de IDs ou respostas que tenham palavras-chaves (tags) inclusas."></ToolSection>
+						<>
+							<CheckboxInput text="Ativar modo avançado" />
+						</>
+					</ToolSectionWrapper>
 				</ToolSectionWrapper>
 
 				<ToolSectionWrapper title="For developers">
@@ -47,6 +60,19 @@ function OptionsPage(): JSX.Element {
 					</ToolSection>
 				</ToolSectionWrapper>
 			</main>
+			<footer className="text-center">
+				<small>
+					Extensão criada por{' '}
+					<a
+						href="https://support.google.com/profile/1062156"
+						rel="noopener noreferrer"
+						className="text-blue-500 hover:underline"
+						target="_blank">
+						Vinícius Gonçalves
+					</a>{' '}
+					com a ajuda de outros PEs.
+				</small>
+			</footer>
 		</div>
 	);
 }

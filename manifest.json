@@ -4,14 +4,7 @@
 	"version": "1.0.0",
 	"description": "Extensão com ferramentas e melhorias para o sistema interno utilizado por PEs nos fóruns do Google.",
 	"options_page": "src/pages/options/index.html",
-	"permissions": [
-		"storage",
-		"activeTab",
-		"scripting",
-		"tabs",
-		"webRequest",
-		"debugger"
-	],
+	"permissions": ["storage", "activeTab", "scripting", "tabs", "webRequest"],
 	"action": {},
 	"icons": {
 		"64": "icon.png",
@@ -21,6 +14,12 @@
 		{
 			"js": ["src/pages/content/index.tsx"],
 			"matches": ["https://support.google.com/*"]
+		},
+		{
+			"js": ["src/pages/common/DOMUtils/XHRInterceptor.js"],
+			"matches": ["https://support.google.com/*"],
+			"run_at": "document_start",
+			"world": "MAIN"
 		}
 	],
 	"background": {
@@ -33,8 +32,5 @@
 			"matches": ["https://support.google.com/*"]
 		}
 	],
-	"host_permissions": [
-		"https://support.google.com/*",
-		"https://www.googleapis.com/youtube/*"
-	]
+	"host_permissions": ["https://support.google.com/*"]
 }

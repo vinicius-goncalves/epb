@@ -1,6 +1,6 @@
-import Button from '../../../../../components/Button';
+import Button from '../../../../../components/ui/Button';
+import { createTab } from '../../../../common/ChromeExtensionUtils';
 import ToolSection from '../../../../content/components/tool-section/ToolSection';
-import createTab from '../../../utils/createTab';
 
 const componentDetails = {
 	title: 'Filtros criados',

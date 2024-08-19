@@ -1,4 +1,4 @@
-import CheckboxInput from '../../../../../components/CheckboxInput';
+import CheckboxInput from '../../../../../components/ui/CheckboxInput';
 import ToolSection from '../../../../content/components/tool-section/ToolSection';
 
 const componentDetails = {

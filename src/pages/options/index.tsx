@@ -1,4 +1,3 @@
-import('./utils/is-json');
 import ReactDOM from 'react-dom/client';
 import OptionsPage from './components/OptionsPage';
 

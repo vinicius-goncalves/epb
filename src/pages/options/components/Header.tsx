@@ -20,8 +20,8 @@ function Header(): JSX.Element {
 				navegador
 			</small>
 			<small className="my-2 text-red-500">
-				As opções com ** significa que estão em desenvolvimento, nenhuma
-				ação será realizada ao utilizá-las.
+				As opções com (**) significa que estão em desenvolvimento,
+				nenhuma ação será realizada ao utilizá-las.
 			</small>
 		</header>
 	);

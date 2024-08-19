@@ -2,7 +2,7 @@ import { PropsWithChildren } from 'react';
 import { tv } from 'tailwind-variants';
 
 interface Props extends PropsWithChildren {
-	title: string;
+	title?: string;
 }
 
 const toolSectionWrapper = tv({
@@ -15,7 +15,7 @@ const toolSectionWrapper = tv({
 function ToolSectionWrapper({ title, children }: Props): JSX.Element {
 	return (
 		<div className={toolSectionWrapper().wrapper()}>
-			<h2 className={toolSectionWrapper().title()}>{title}</h2>
+			{title && <h2 className={toolSectionWrapper().title()}>{title}</h2>}
 			<div>{children}</div>
 		</div>
 	);

@@ -1,5 +1,3 @@
-import { isWithinAThread } from '../../utils/utils';
-
 class URLChangeEvent {
 	private evt: (() => void) | null = null;
 	private interval: ReturnType<typeof window.setInterval> | null = null;
@@ -7,9 +5,10 @@ class URLChangeEvent {
 	private prevURL: string = this.URLToString();
 	private currURL: string = this.URLToString();
 
+	private firstInit: boolean = true;
+
 	constructor(initialURL: URL | string = this.getURL()) {
-		this.prevURL =
-			typeof initialURL === 'string' ? initialURL : initialURL.toString();
+		this.prevURL = typeof initialURL === 'string' ? initialURL : initialURL.toString();
 	}
 
 	startEvent() {
@@ -17,13 +16,11 @@ class URLChangeEvent {
 			this.interval = setInterval(() => {
 				this.currURL = this.URLToString();
 
-				if (
-					this.currURL !== this.prevURL ||
-					isWithinAThread(this.currURL)
-				) {
+				if (this.currURL !== this.prevURL || this.firstInit) {
 					const URLChangedEvent = new CustomEvent('URLChanged');
 					window.dispatchEvent(URLChangedEvent);
 					this.prevURL = this.currURL;
+					this.firstInit = false;
 				}
 			}, 100);
 		};
