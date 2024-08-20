@@ -1,7 +1,7 @@
 {
 	"manifest_version": 3,
 	"name": "Extensão para PEs Brasileiros [EPB]",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Extensão com ferramentas e melhorias para o sistema interno utilizado por PEs nos fóruns do Google.",
 	"options_page": "src/pages/options/index.html",
 	"permissions": ["storage", "activeTab", "scripting", "tabs", "webRequest"],
