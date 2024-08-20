@@ -8,7 +8,7 @@ import URLChangeEvent from '../events/url-change.event';
 	urlChangeEvent.startEvent();
 })();
 
-async function getEscalationMenu(): Promise<HTMLElement> {
+async function getEscalationMenu(): Promise<HTMLElement | undefined> {
 	const cbWaitUntil = () => {
 		const defaultForum = document.querySelector(CommunityConsoleClasses.ESCALATION_MENU_OPTIONS);
 		if (!defaultForum || !defaultForum.classList.contains('forum-selection-label')) return false;
@@ -17,18 +17,19 @@ async function getEscalationMenu(): Promise<HTMLElement> {
 		return wrapper;
 	};
 
-	return (await waitUntil(cbWaitUntil, { wait: 50 })) as HTMLElement;
+	const res = (await waitUntil(cbWaitUntil, { wait: 50, sleepThread: true })) as HTMLElement;
+	return res;
 }
 
 async function openForumsList() {
 	const escalationMenu = await getEscalationMenu();
 
 	const cbWaitUntil = () => {
-		const btnText = escalationMenu.querySelector('.button-text') as HTMLElement;
+		const btnText = escalationMenu?.querySelector('.button-text') as HTMLElement;
 		btnText.click();
 	};
 
-	await waitUntil(cbWaitUntil, { wait: 200, sleepThread: true });
+	await waitUntil(cbWaitUntil, { wait: 50, sleepThread: true });
 }
 
 async function getForumsOptions(): Promise<{ forum: HTMLElement; index: number }[]> {
@@ -47,9 +48,11 @@ async function selectEscalationMenu() {
 }
 
 function handleWithDefaultForum() {
+	// getEscalationMenu();
 	selectEscalationMenu();
 }
 
 window.addEventListener('URLChanged', () => {
+	console.log('Initialized...');
 	handleWithDefaultForum();
 });
