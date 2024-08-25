@@ -4,9 +4,9 @@ import ModalContent from '../../../../../components/modal/ModalContent';
 import ModalWrapper from '../../../../../components/modal/ModalWrapper';
 import Button from '../../../../../components/ui/Button';
 import { useProgressContext } from '../../../../../hooks';
-import { createDownloadFile } from '../../../../common/DOMUtils';
-import { waitUntil } from '../../../../common/utils';
-import { CCElements } from '../../../../ts/enums/cc-elements.enum';
+import { createDownloadFile } from '../../../../../common/DOMUtils';
+import { waitUntil } from '../../../../../common/utils';
+import { CCElements } from '../../../../../ts/enums/cc-elements.enum';
 
 const twClasses = tv({
 	slots: {

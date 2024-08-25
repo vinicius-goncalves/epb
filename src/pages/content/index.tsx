@@ -1,9 +1,6 @@
-import { injectDOMScript } from '../common/DOMUtils';
-
-import './chrome/runtime/onMessage';
-
 import '@assets/styles/tailwind.css';
-
+import { injectDOMScript } from '../../common/DOMUtils';
+import './chrome/runtime/onMessage';
 import './features/lookForDefaultForum';
 
 (() => {

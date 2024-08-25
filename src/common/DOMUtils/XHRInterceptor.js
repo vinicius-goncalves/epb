@@ -1,4 +1,4 @@
-import { isArrayBuffer, isValidJSON } from '../utils';
+import { isArrayBuffer, isValidJSON } from '../../common/utils';
 import { triggerEvent } from './triggerEvent';
 
 const $XHR = window.XMLHttpRequest;
@@ -27,9 +27,7 @@ const $XHRPrototype = $XHR.prototype;
 					this.$EPBResponse = new TextDecoder().decode(response);
 				}
 
-				this.$EPBResponse =
-					isValidJSON(this.$EPBResponse) &&
-					JSON.parse(this.$EPBResponse);
+				this.$EPBResponse = isValidJSON(this.$EPBResponse) && JSON.parse(this.$EPBResponse);
 
 				triggerEvent('CustomResponse', {
 					detail: {

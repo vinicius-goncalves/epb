@@ -1,4 +1,4 @@
-import Actions from '../../ts/enums/actions.enum';
+import Actions from '../../../ts/enums/actions.enum';
 
 const primaryUrl = 'https://support.google.com/*';
 

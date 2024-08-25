@@ -1,5 +1,5 @@
+import { createTab } from '../../../../../common/ChromeExtensionUtils';
 import Button from '../../../../../components/ui/Button';
-import { createTab } from '../../../../common/ChromeExtensionUtils';
 import ToolSection from '../../../../content/components/tool-section/ToolSection';
 
 const componentDetails = {
@@ -15,14 +15,9 @@ function ExportCreatedFiltersOption(): JSX.Element {
 	};
 
 	return (
-		<ToolSection
-			title={componentDetails.title}
-			description={componentDetails.description}>
+		<ToolSection title={componentDetails.title} description={componentDetails.description}>
 			<>
-				<Button
-					title="Exportar filtros"
-					onClick={createConsoleTab}
-				/>
+				<Button title="Exportar filtros" onClick={createConsoleTab} />
 			</>
 		</ToolSection>
 	);

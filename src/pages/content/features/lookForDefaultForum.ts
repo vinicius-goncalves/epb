@@ -1,6 +1,6 @@
-import { getDefaultForumIndex } from '../../common/ChromeExtensionUtils';
-import { waitUntil } from '../../common/utils';
-import CommunityConsoleClasses from '../../ts/enums/cc-classes.enum';
+import { getDefaultForumIndex } from '../../../common/ChromeExtensionUtils';
+import { waitUntil } from '../../../common/utils';
+import CommunityConsoleClasses from '../../../ts/enums/cc-classes.enum';
 import URLChangeEvent from '../events/url-change.event';
 
 (() => {

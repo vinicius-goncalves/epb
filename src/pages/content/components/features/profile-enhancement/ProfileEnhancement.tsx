@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
-import { getEPBResponses } from '../../../../common/ChromeExtensionUtils';
-import { initComponent } from '../../../../common/ReactUtils';
-import { EPBResponse } from '../../../../ts/types/EPBResponse';
+import { getEPBResponses } from '../../../../../common/ChromeExtensionUtils';
+import { initComponent } from '../../../../../common/ReactUtils';
+import { EPBResponse } from '../../../../../ts/types/EPBResponse';
 import EnhancedVideoProfile from './EnhancedVideoProfile';
 
 interface Props {
@@ -81,7 +81,9 @@ function ProfileEnhancement({ userVideosProfile }: Props): null {
 					viewCount: number;
 				};
 
-				initComponent(<EnhancedVideoProfile videoDetails={videoDetails} />, { container: newEPBContainer });
+				initComponent(<EnhancedVideoProfile videoDetails={videoDetails} />, {
+					container: newEPBContainer,
+				});
 			}
 		})();
 	}, [userVideosProfile]);

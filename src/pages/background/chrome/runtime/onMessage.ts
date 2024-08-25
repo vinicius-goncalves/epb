@@ -1,4 +1,4 @@
-import Actions from '../../../ts/enums/actions.enum';
+import Actions from '../../../../ts/enums/actions.enum';
 
 type MsgParam =
 	| { action: Actions | string; data: never }

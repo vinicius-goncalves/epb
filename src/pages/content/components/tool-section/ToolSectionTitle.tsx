@@ -13,11 +13,7 @@ const toolSectionTitle = tv({
 	},
 });
 
-function ToolSectionTitle({
-	title,
-	description,
-	addCheckbox,
-}: Props): JSX.Element {
+function ToolSectionTitle({ title, description, addCheckbox }: Props): JSX.Element {
 	return (
 		<div className="flex flex-col">
 			<div className="flex w-full gap-2">

@@ -16,7 +16,7 @@
 			"matches": ["https://support.google.com/*"]
 		},
 		{
-			"js": ["src/pages/common/DOMUtils/XHRInterceptor.js"],
+			"js": ["src/common/DOMUtils/XHRInterceptor.js"],
 			"matches": ["https://support.google.com/*"],
 			"run_at": "document_start",
 			"world": "MAIN"

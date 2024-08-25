@@ -1,5 +1,5 @@
+import { createTab } from '../../../../../common/ChromeExtensionUtils';
 import Button from '../../../../../components/ui/Button';
-import { createTab } from '../../../../common/ChromeExtensionUtils';
 import ToolSection from '../../../../content/components/tool-section/ToolSection';
 
 function ExportCannedResponsesOption(): JSX.Element {
@@ -17,10 +17,7 @@ function ExportCannedResponsesOption(): JSX.Element {
 							que você criou, ao final do processo, um arquivo
 							.TXT será criado com todas suas respostas.">
 			<>
-				<Button
-					title="Exportar respostas automáticas"
-					onClick={createConsoleTab}
-				/>
+				<Button title="Exportar respostas automáticas" onClick={createConsoleTab} />
 			</>
 		</ToolSection>
 	);
