@@ -11,10 +11,7 @@ function useForumSelect(selectRef: RefObject<HTMLSelectElement>) {
 		const forumOptions = ev.target.options;
 		const selectedForum = forumOptions[ev.target.selectedIndex];
 
-		const [forumIndex, forumName] = [
-			selectedForum.value,
-			selectedForum.text,
-		];
+		const [forumIndex, forumName] = [selectedForum.value, selectedForum.text];
 
 		try {
 			await storage.set({ default_forum: forumIndex });
@@ -38,9 +35,7 @@ function useForumSelect(selectRef: RefObject<HTMLSelectElement>) {
 		getDefaultForum().then((defaultForumIndex) => {
 			const forumOptions = [...selectRef.current!.options];
 
-			const defaultForum = forumOptions.find(
-				({ value }) => value == defaultForumIndex,
-			);
+			const defaultForum = forumOptions.find(({ value }) => value == defaultForumIndex);
 
 			if (defaultForum) {
 				defaultForum.selected = true;
@@ -53,8 +48,7 @@ function useForumSelect(selectRef: RefObject<HTMLSelectElement>) {
 
 const componentDetails = {
 	title: 'Forum padrão',
-	description:
-		'Selecione um fórum para se tornar padrão ao escalar uma pergunta',
+	description: 'Selecione um fórum para se tornar padrão ao escalar uma pergunta',
 };
 
 const select = tv({
@@ -68,19 +62,14 @@ function DefaultForumSelect(): JSX.Element {
 	return (
 		<ToolSection
 			title={componentDetails.title}
-			description={componentDetails.description}>
+			description={componentDetails.description}
+			showCheckbox={false}>
 			<>
-				<select
-					className={select()}
-					onChange={updateForum}
-					ref={selectRef}>
+				<select className={select()} onChange={updateForum} ref={selectRef}>
 					<>
 						<option value="1">Fórum Ouro+ Privado</option>
 						<option value="0">Fórum Prata+ Privado</option>
-						<option
-							className="hidden"
-							selected
-						/>
+						<option className="hidden" selected />
 					</>
 				</select>
 			</>

@@ -1,4 +1,3 @@
-import CheckboxInput from '../../../components/ui/CheckboxInput';
 import Header from './Header';
 
 import ToolSection from '../../content/components/tool-section/ToolSection';
@@ -58,27 +57,19 @@ function OptionsPage(): JSX.Element {
 						<ExportCannedResponsesOption />
 						<ToolSection
 							title="Usar modo avançado**"
-							description="Com o modo avançado, será possível filtrar quais respostas baixar, como através de IDs ou respostas que tenham palavras-chaves (tags) inclusas."></ToolSection>
-						<>
-							<CheckboxInput
-								text="Ativar modo avançado"
-								checked={isAdvancedModeExportActive}
-								onChange={toggleAdvancedModeExport}
-							/>
-						</>
+							description="Com o modo avançado, será possível filtrar quais respostas baixar, como através de IDs ou respostas que tenham palavras-chaves (tags) inclusas."
+							checked={isAdvancedModeExportActive}
+							updateCheckboxValue={toggleAdvancedModeExport}
+						/>
 					</ToolSectionWrapper>
 				</ToolSectionWrapper>
 
 				<ToolSectionWrapper title="For developers">
-					<ToolSection title="Show debug information**">
-						<>
-							<CheckboxInput
-								text="Show debug information"
-								checked={isPreferenceActive}
-								onChange={togglePreference}
-							/>
-						</>
-					</ToolSection>
+					<ToolSection
+						title="Show debug information**"
+						checked={isPreferenceActive}
+						updateCheckboxValue={togglePreference}
+					/>
 				</ToolSectionWrapper>
 			</main>
 			<footer className="text-center">

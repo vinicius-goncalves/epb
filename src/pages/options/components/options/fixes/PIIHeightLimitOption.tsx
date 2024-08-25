@@ -1,4 +1,3 @@
-import CheckboxInput from '../../../../../components/ui/CheckboxInput';
 import { usePreferenceManager } from '../../../../../hooks';
 import ToolSection from '../../../../content/components/tool-section/ToolSection';
 
@@ -14,13 +13,12 @@ function HeightLimit(): JSX.Element {
 	const { isPreferenceActive, togglePreference } = usePreferenceManager('piiHeightLimit');
 
 	return (
-		<ToolSection title={componentDetails.title} description={componentDetails.description}>
-			<CheckboxInput
-				text="Limitar height com questões PII"
-				checked={isPreferenceActive}
-				onChange={togglePreference}
-			/>
-		</ToolSection>
+		<ToolSection
+			title={componentDetails.title}
+			description={componentDetails.description}
+			checked={isPreferenceActive}
+			updateCheckboxValue={togglePreference}
+		/>
 	);
 }
 

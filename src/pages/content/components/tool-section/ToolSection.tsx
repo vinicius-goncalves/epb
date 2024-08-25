@@ -1,24 +1,30 @@
 import { PropsWithChildren } from 'react';
-import ToolSectionTitle from './ToolSectionTitle';
+import ToolSectionHeader from './ToolSectionHeader';
 
 interface Props extends PropsWithChildren {
 	title: string;
 	description?: string;
-	addedCheckbox?: boolean;
+	showCheckbox?: boolean;
+	checked?: boolean;
+	updateCheckboxValue?: React.InputHTMLAttributes<HTMLInputElement>['onChange'];
 }
 
 function ToolSection({
 	title,
 	description,
-	addedCheckbox,
+	showCheckbox = true,
+	checked = false,
+	updateCheckboxValue,
 	children,
 }: Props): JSX.Element {
 	return (
 		<div>
-			<ToolSectionTitle
+			<ToolSectionHeader
 				title={title}
 				description={description || ''}
-				addCheckbox={addedCheckbox}
+				showCheckbox={showCheckbox}
+				checked={checked}
+				updateCheckboxValue={updateCheckboxValue}
 			/>
 			<div className="mb-3">{children}</div>
 		</div>
