@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
+import { createDownloadFile } from '../../../../../common/DOMUtils';
 import ModalContent from '../../../../../components/modal/ModalContent';
 import ModalWrapper from '../../../../../components/modal/ModalWrapper';
 import Button from '../../../../../components/ui/Button';
 import { useProgressContext } from '../../../../../hooks';
-import { createDownloadFile } from '../../../../../common/DOMUtils';
 
 function useExportProgress() {
 	const { setProgress } = useProgressContext();

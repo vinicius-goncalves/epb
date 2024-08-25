@@ -1,5 +1,5 @@
 import { usePreferenceManager } from '../../../../../hooks';
-import ToolSection from '../../../../content/components/tool-section/ToolSection';
+import ToolSection from '../../tool-section/ToolSection';
 
 const componentDetails = {
 	title: 'Limitar o height de questões com PII**',

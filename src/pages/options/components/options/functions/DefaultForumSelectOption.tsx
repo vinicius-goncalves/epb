@@ -2,7 +2,7 @@ import { type ChangeEvent, type RefObject } from 'react';
 
 import { useCallback, useEffect, useRef } from 'react';
 import { tv } from 'tailwind-variants';
-import ToolSection from '../../../../content/components/tool-section/ToolSection';
+import ToolSection from '../../tool-section/ToolSection';
 
 function useForumSelect(selectRef: RefObject<HTMLSelectElement>) {
 	const storage = chrome.storage.sync;

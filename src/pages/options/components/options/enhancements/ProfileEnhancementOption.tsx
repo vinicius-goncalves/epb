@@ -1,5 +1,5 @@
 import { usePreferenceManager } from '../../../../../hooks';
-import ToolSection from '../../../../content/components/tool-section/ToolSection';
+import ToolSection from '../../tool-section/ToolSection';
 
 function ProfileEnhancementOption(): JSX.Element {
 	const { isPreferenceActive, togglePreference } = usePreferenceManager('enhanceProfiles');

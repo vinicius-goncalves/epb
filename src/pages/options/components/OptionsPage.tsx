@@ -1,7 +1,7 @@
 import Header from './Header';
 
-import ToolSection from '../../content/components/tool-section/ToolSection';
-import ToolSectionWrapper from '../../content/components/tool-section/ToolSectionWrapper';
+import ToolSection from './tool-section/ToolSection';
+import ToolSectionWrapper from './tool-section/ToolSectionWrapper';
 
 import { usePreferenceManager } from '../../../hooks';
 import ProfileEnhancementOption from './options/enhancements/ProfileEnhancementOption';
