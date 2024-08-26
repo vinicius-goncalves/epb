@@ -10,6 +10,8 @@ interface Props {
 
 const toolSectionTitle = tv({
 	slots: {
+		flexCol: 'flex flex-col',
+		flexWidth: 'flex w-full gap-2',
 		title: 'text-[.9rem] font-medium',
 		description: 'max-w-lg text-[.70rem] text-gray-500/90',
 	},
@@ -23,8 +25,8 @@ function ToolSectionHeader({
 	updateCheckboxValue,
 }: Props): JSX.Element {
 	return (
-		<div className="flex flex-col">
-			<div className="flex w-full gap-2">
+		<div className={toolSectionTitle().flexCol()}>
+			<div className={toolSectionTitle().flexWidth()}>
 				{showCheckbox && <input type="checkbox" onChange={updateCheckboxValue} checked={checked} />}
 				<h2 className={toolSectionTitle().title()}>{title}</h2>
 			</div>
