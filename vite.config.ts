@@ -8,13 +8,15 @@ const root = resolve(__dirname, 'src');
 const outDir = resolve(__dirname, 'dist');
 const assetsDir = resolve(root, 'assets');
 const pagesDir = resolve(root, 'pages');
+const featuresDir = resolve(pagesDir, 'content', 'features');
 
 export default defineConfig({
-	plugins: [react(), crx({ manifest: manifest as ManifestV3Export })],
+	plugins: [crx({ manifest: manifest as ManifestV3Export }), react()],
 	resolve: {
 		alias: {
 			'@assets': assetsDir,
 			'@pages': pagesDir,
+			'@features': featuresDir,
 		},
 	},
 	build: {
