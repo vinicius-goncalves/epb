@@ -1,4 +1,5 @@
 import Actions from '../../../../ts/enums/actions.enum';
+import { getUserPreferences } from '../userPreferences';
 
 type MsgParam =
 	| { action: Actions | string; data: never }
@@ -28,9 +29,11 @@ chrome.runtime.onMessage.addListener((message: MsgParam, _s, sendResponse) => {
 		});
 	}
 
-	// if(message.action === 'get-preferences') {
-
-	// }
+	if (message.action === 'get-user-preferences') {
+		getUserPreferences().then((res) => {
+			sendResponse(res);
+		});
+	}
 
 	return true;
 });

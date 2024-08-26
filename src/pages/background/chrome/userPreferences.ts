@@ -1,3 +1,5 @@
+import { KeyofDefaultPreferences } from '../../../ts/types/KeyofDefaultPreferences.type';
+
 export const defaultPreferences = {
 	threadDetection: false,
 	piiHeightLimit: false,
@@ -9,7 +11,7 @@ export const defaultPreferences = {
 
 const storage = chrome.storage.sync;
 
-async function savePreferences(preferences: typeof defaultPreferences) {
+export async function savePreferences(preferences: typeof defaultPreferences) {
 	try {
 		await storage.set({ preferences });
 	} catch (err) {
@@ -17,7 +19,7 @@ async function savePreferences(preferences: typeof defaultPreferences) {
 	}
 }
 
-async function getStoredPreferences() {
+export async function getStoredPreferences() {
 	try {
 		const res = await storage.get('preferences');
 		return res.preferences ?? null;
@@ -37,7 +39,7 @@ export async function getUserPreferences() {
 	return preferences;
 }
 
-export async function updateUserPreferences(preferenceKey: keyof typeof defaultPreferences, newValue: boolean) {
+export async function updateUserPreferences(preferenceKey: KeyofDefaultPreferences, newValue: boolean) {
 	const currPreferences = await getUserPreferences();
 	const newPreferences = { ...currPreferences, [preferenceKey]: newValue };
 
