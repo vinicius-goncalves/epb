@@ -20,6 +20,11 @@
 			"matches": ["https://support.google.com/*"],
 			"run_at": "document_start",
 			"world": "MAIN"
+		},
+		{
+			"js": ["src/pages/content/features/piiHeightLimit.feature.ts"],
+			"matches": ["https://support.google.com/*"],
+			"world": "MAIN"
 		}
 	],
 	"background": {
