@@ -2,7 +2,7 @@ import { PropsWithChildren } from 'react';
 import ToolSectionHeader from './ToolSectionHeader';
 
 interface Props extends PropsWithChildren {
-	title: string;
+	name: string;
 	description?: string;
 	showCheckbox?: boolean;
 	checked?: boolean;
@@ -10,7 +10,7 @@ interface Props extends PropsWithChildren {
 }
 
 function ToolSection({
-	title,
+	name,
 	description,
 	showCheckbox = true,
 	checked = false,
@@ -20,7 +20,7 @@ function ToolSection({
 	return (
 		<div>
 			<ToolSectionHeader
-				title={title}
+				name={name}
 				description={description || ''}
 				showCheckbox={showCheckbox}
 				checked={checked}
