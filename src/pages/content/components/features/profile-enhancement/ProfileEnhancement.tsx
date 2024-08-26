@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { getEPBResponses } from '../../../../../common/ChromeExtensionUtils';
 import { initComponent } from '../../../../../common/ReactUtils';
-import { EPBResponse } from '../../../../../ts/types/EPBResponse';
+import { EPBResponse } from '../../../../../ts/types/EPBResponse.type';
 import EnhancedVideoProfile from './EnhancedVideoProfile';
 
 interface Props {

@@ -1,6 +1,7 @@
 import '@assets/styles/tailwind.css';
 import { injectDOMScript } from '../../common/DOMUtils';
 import './chrome/runtime/onMessage';
+import './features/index';
 import './features/lookForDefaultForum';
 
 (() => {
@@ -14,7 +15,6 @@ import './features/lookForDefaultForum';
 				for (const resource of wr.resources) {
 					if (resource.indexOf('XHRInterceptor') > -1) {
 						injectDOMScript(chrome.runtime.getURL(resource));
-						break;
 					}
 				}
 			}
