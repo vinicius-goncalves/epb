@@ -4,6 +4,7 @@ import ToolSection from './tool-section/ToolSection';
 import ToolSectionWrapper from './tool-section/ToolSectionWrapper';
 
 import { usePreferenceManager } from '../../../hooks';
+import ShowDebugInformation from './options/dev/ShowDebugInformation';
 import ProfileEnhancementOption from './options/enhancements/ProfileEnhancementOption';
 import ThreadEnhancementOption from './options/enhancements/ThreadEnhancementOption';
 import PIIHeightLimitOption from './options/fixes/PIIHeightLimitOption';
@@ -29,9 +30,7 @@ function OptionsPageDescription() {
 }
 
 function OptionsPage(): JSX.Element {
-	const { isPreferenceActive, togglePreference } = usePreferenceManager('showDebugInformation');
-	const { isPreferenceActive: isAdvancedModeExportActive, togglePreference: toggleAdvancedModeExport } =
-		usePreferenceManager('advancedExportMode');
+	const { isPreferenceActive, togglePreference } = usePreferenceManager('advancedExportMode');
 
 	return (
 		<div className="m-3">
@@ -56,20 +55,16 @@ function OptionsPage(): JSX.Element {
 					<ToolSectionWrapper>
 						<ExportCannedResponsesOption />
 						<ToolSection
-							title="Usar modo avançado**"
+							name="Usar modo avançado**"
 							description="Com o modo avançado, será possível filtrar quais respostas baixar, como através de IDs ou respostas que tenham palavras-chaves (tags) inclusas."
-							checked={isAdvancedModeExportActive}
-							updateCheckboxValue={toggleAdvancedModeExport}
+							checked={isPreferenceActive}
+							updateCheckboxValue={togglePreference}
 						/>
 					</ToolSectionWrapper>
 				</ToolSectionWrapper>
 
 				<ToolSectionWrapper title="For developers">
-					<ToolSection
-						title="Show debug information**"
-						checked={isPreferenceActive}
-						updateCheckboxValue={togglePreference}
-					/>
+					<ShowDebugInformation />
 				</ToolSectionWrapper>
 			</main>
 			<footer className="text-center">
