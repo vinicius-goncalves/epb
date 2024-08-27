@@ -1,8 +1,8 @@
-import { crx, ManifestV3Export } from '@crxjs/vite-plugin';
+import { crx } from '@crxjs/vite-plugin';
 import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
-import manifest from './manifest.json';
+import manifest from './manifest.config';
 
 const root = resolve(__dirname, 'src');
 const outDir = resolve(__dirname, 'dist');
@@ -11,7 +11,7 @@ const pagesDir = resolve(root, 'pages');
 const featuresDir = resolve(pagesDir, 'content', 'features');
 
 export default defineConfig({
-	plugins: [crx({ manifest: manifest as ManifestV3Export }), react()],
+	plugins: [crx({ manifest }), react()],
 	resolve: {
 		alias: {
 			'@assets': assetsDir,
