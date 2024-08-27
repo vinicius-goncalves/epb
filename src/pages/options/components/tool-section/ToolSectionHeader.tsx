@@ -18,6 +18,7 @@ const tool = tv({
 });
 
 const status = tv({
+	base: 'my-2 text-[.6rem]',
 	variants: {
 		status: {
 			active: 'text-blue-500',
@@ -28,14 +29,14 @@ const status = tv({
 
 function ToolSectionHeader({ name, description, showCheckbox, checked, updateCheckboxValue }: Props): JSX.Element {
 	const ToolStatus = () => (
-		<small className={status({ status: checked ? 'active' : 'inactive' })}>
+		<p className={status({ status: checked ? 'active' : 'inactive' })}>
 			({checked ? 'Ativado' : 'Desativado'})
-		</small>
+		</p>
 	);
 
 	return (
 		<div className="flex flex-col">
-			<header className="flex w-full gap-2">
+			<header className="flex w-full items-center gap-2">
 				{showCheckbox && <input type="checkbox" onChange={updateCheckboxValue} checked={checked} />}
 				<h2 className={tool().name()}>{name}</h2>
 				{showCheckbox && <ToolStatus />}
