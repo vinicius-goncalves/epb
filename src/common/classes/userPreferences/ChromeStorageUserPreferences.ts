@@ -1,4 +1,4 @@
-import { AbstractUserPreferences, defaultPreferences, DefaultPreferences } from './index';
+import { AbstractUserPreferences, defaultPreferences, Preferences } from './index';
 
 const storage = chrome.storage.sync;
 
@@ -7,7 +7,7 @@ export class ChromeStorageUserPreferences extends AbstractUserPreferences {
 		super();
 	}
 
-	async savePreferences(preferences: DefaultPreferences): Promise<unknown> {
+	async savePreferences(preferences: Preferences): Promise<unknown> {
 		try {
 			await storage.set({ preferences });
 			return preferences;
@@ -32,11 +32,13 @@ export class ChromeStorageUserPreferences extends AbstractUserPreferences {
 			await storage.set(defaultPreferences);
 			return preferences;
 		}
+
+		return preferences;
 	}
 
-	async updatePreferences(preferenceKey: keyof DefaultPreferences, newValue: boolean) {
+	async updatePreferences(preferenceKey: keyof Preferences, newValue: boolean) {
 		const currPreferences = await this.getPreferences();
-		const newPreferences = { ...currPreferences, [preferenceKey]: newValue } as DefaultPreferences;
+		const newPreferences = { ...currPreferences, [preferenceKey]: newValue } as Preferences;
 
 		this.savePreferences(newPreferences);
 	}
