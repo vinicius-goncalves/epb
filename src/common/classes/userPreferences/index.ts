@@ -11,3 +11,4 @@ export type Preferences = typeof defaultPreferences;
 
 export { AbstractUserPreferences } from './AbstractUserPreferences';
 export { ChromeStorageUserPreferences } from './ChromeStorageUserPreferences';
+export { UserPreferences } from './UserPreferences';
