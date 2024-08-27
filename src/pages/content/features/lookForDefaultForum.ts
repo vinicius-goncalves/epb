@@ -36,7 +36,6 @@ async function openForumsList() {
 
 	const fn = () => {
 		const btnText = escalationMenu.querySelector<HTMLSpanElement>(CCClasses.BUTTON_LIKE_FORUM_SELECTION);
-		console.log(btnText);
 		if (btnText) btnText.click();
 	};
 
