@@ -4,36 +4,46 @@ import { CCClasses, CCElements } from '../../../ts/enums';
 import URLChangeEvent from '../events/url-change.event';
 import { debugConsole } from './debugConsole';
 
+interface Forum {
+	forum: HTMLElement;
+	index: number;
+}
+
 (() => {
 	const urlChangeEvent = new URLChangeEvent();
 	urlChangeEvent.startEvent();
 })();
 
-async function getEscalationMenu(): Promise<HTMLElement | undefined> {
-	const cbWaitUntil = () => {
-		const defaultForum = document.querySelector(CCClasses.ESCALATION_MENU_OPTIONS);
-		if (!defaultForum || !defaultForum.classList.contains('forum-selection-label')) return false;
+async function getEscalationMenu(): Promise<HTMLElement> {
+	const fn = () => {
+		const selector = CCClasses.TEXT_FORUM_ESCALATION_SELECTION;
+		const textForumEscalation = document.querySelector<HTMLSpanElement>(selector);
 
-		const wrapper = defaultForum.closest('.wrapper');
-		return wrapper;
+		if (!textForumEscalation || textForumEscalation.className.indexOf(selector) > -1) {
+			return false;
+		}
+
+		const escalationMenu = textForumEscalation.closest('.wrapper');
+		return escalationMenu;
 	};
 
-	const res = (await waitUntil(cbWaitUntil, { wait: 50, sleepThread: true })) as HTMLElement;
+	const res = (await waitUntil(fn, { wait: 50, sleepThread: true })) as HTMLElement;
 	return res;
 }
 
 async function openForumsList() {
 	const escalationMenu = await getEscalationMenu();
 
-	const cbWaitUntil = () => {
-		const btnText = escalationMenu?.querySelector('.button-text') as HTMLElement;
-		btnText.click();
+	const fn = () => {
+		const btnText = escalationMenu.querySelector<HTMLSpanElement>(CCClasses.BUTTON_LIKE_FORUM_SELECTION);
+		console.log(btnText);
+		if (btnText) btnText.click();
 	};
 
-	await waitUntil(cbWaitUntil, { wait: 50, sleepThread: true });
+	await waitUntil(fn, { wait: 50, sleepThread: true });
 }
 
-async function getForumsOptions(): Promise<{ forum: HTMLElement; index: number }[]> {
+async function getForumsOptions(): Promise<Forum[]> {
 	await openForumsList();
 	const forumOptions = document.querySelectorAll(CCElements.INDIVIDUAL_FORUM_OPTION);
 	const forumOptionsReversed = [...forumOptions].map((forum, index) => ({ forum, index })).reverse();
