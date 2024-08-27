@@ -1,4 +1,4 @@
-import Actions from '../../../ts/enums/actions.enum';
+import { Actions } from '../../../ts/enums';
 
 const CC_PROFILE_URL = 'https://support.google.com/s/community/user/*';
 

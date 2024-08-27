@@ -1,4 +1,4 @@
-import Actions from '../../ts/enums/actions.enum';
+import { Actions } from '../../ts/enums';
 
 export function getDefaultForumIndex() {
 	return chrome.runtime.sendMessage({ action: Actions.GET_DEFAULT_FORUM }).then((res) => {
