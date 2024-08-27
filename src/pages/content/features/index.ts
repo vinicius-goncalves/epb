@@ -1,22 +1,15 @@
 import { findWebResourcePath } from '../../../common/ChromeExtensionUtils';
 import { injectDOMScript } from '../../../common/DOMUtils';
 
-interface IPreferencesMapValue {
-	isPreferenceActive: boolean;
-	scriptPath: string;
-}
+async function initiateFeatures() {
+	const preferences = await chrome.runtime.sendMessage({ action: 'get-user-preferences' });
 
-const preferencesMap = new Map<string, IPreferencesMapValue>([['piiHeightLimit', <IPreferencesMapValue>{}]]);
+	for (const [preference, isPreferenceActive] of Object.entries(preferences)) {
+		if (!isPreferenceActive) continue;
 
-function initiateFeatures() {
-	chrome.runtime.sendMessage({ action: 'get-user-preferences' }).then((res) => {
-		for (const [preference, isPreferenceActive] of Object.entries(res)) {
-			if (isPreferenceActive && preferencesMap.has(preference)) {
-				const path = findWebResourcePath(`${preference}.feature`)!;
-				injectDOMScript(path);
-			}
-		}
-	});
+		const path = findWebResourcePath(`${preference}.feature`)!;
+		injectDOMScript(path);
+	}
 }
 
 initiateFeatures();
