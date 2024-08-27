@@ -23,6 +23,6 @@ export class UserPreferences extends AbstractUserPreferences {
 		}
 
 		const [preferenceKey, isPreferenceActive] = foundPreference;
-		return { preferenceKey, isPreferenceActive: !!isPreferenceActive ?? false };
+		return { preferenceKey, isPreferenceActive: Boolean(isPreferenceActive) ?? false };
 	}
 }
