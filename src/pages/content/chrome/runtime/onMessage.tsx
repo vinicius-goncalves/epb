@@ -2,8 +2,7 @@ import { findNode } from '../../../../common/DOMUtils';
 import { initComponent } from '../../../../common/ReactUtils';
 import { waitUntil } from '../../../../common/utils';
 import { ProgressProvider } from '../../../../contexts/ProgressContext';
-import Actions from '../../../../ts/enums/actions.enum';
-import CCC from '../../../../ts/enums/cc-classes.enum';
+import { Actions, CCClasses } from '../../../../ts/enums';
 import ExportCannedAnswers from '../../components/features/exports/ExportCannedAnswers';
 import ExportFilters from '../../components/features/exports/ExportFilters';
 import ProfileEnhancement from '../../components/features/profile-enhancement/ProfileEnhancement';
@@ -30,7 +29,7 @@ chrome.runtime.onMessage.addListener(async (message) => {
 	if (message === Actions.ENHANCE_PROFILE) {
 		const userVideosProfile = (await waitUntil(
 			() => {
-				const userVideosProfile = findNode(CCC.PROFILE_VIDEO_WRAPPER);
+				const userVideosProfile = findNode(CCClasses.PROFILE_VIDEO_WRAPPER);
 				return userVideosProfile ? userVideosProfile : false;
 			},
 			{ wait: 25 },
