@@ -46,8 +46,6 @@ export function ProgressProvider({ children }: { children: React.ReactNode }): J
 		if (isProgressFinished(progress)) {
 			setProgress({ ...initialState, isFinished: true, isLoading: false });
 		}
-
-		console.log('a');
 	}, [progress]);
 
 	return <ProgressContext.Provider value={{ progress, setProgress }}>{children}</ProgressContext.Provider>;
