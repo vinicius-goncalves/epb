@@ -6,7 +6,7 @@ function ThreadEnhancementOption(): JSX.Element {
 
 	return (
 		<ToolSection
-			title="Aprimorar visualização de perfil"
+			name="Aprimorar visualização de perfil"
 			description="Os perfis (/user | /profile) serão aprimorados com ainda mais visualizações sobre os
             vídeos postados, guias criados e outros detalhes sobre um perfil."
 			checked={isPreferenceActive}

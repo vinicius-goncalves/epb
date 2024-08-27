@@ -60,10 +60,7 @@ function DefaultForumSelect(): JSX.Element {
 	const { updateForum } = useForumSelect(selectRef);
 
 	return (
-		<ToolSection
-			title={componentDetails.title}
-			description={componentDetails.description}
-			showCheckbox={false}>
+		<ToolSection name={componentDetails.title} description={componentDetails.description} showCheckbox={false}>
 			<>
 				<select className={select()} onChange={updateForum} ref={selectRef}>
 					<>

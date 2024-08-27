@@ -15,7 +15,7 @@ function ThreadDetectionOption(): JSX.Element {
 
 	return (
 		<ToolSection
-			title={componentDetails.title}
+			name={componentDetails.title}
 			description={componentDetails.description}
 			checked={isPreferenceActive}
 			updateCheckboxValue={togglePreference}

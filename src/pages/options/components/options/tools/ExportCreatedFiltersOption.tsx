@@ -15,10 +15,7 @@ function ExportCreatedFiltersOption(): JSX.Element {
 	};
 
 	return (
-		<ToolSection
-			title={componentDetails.title}
-			description={componentDetails.description}
-			showCheckbox={false}>
+		<ToolSection name={componentDetails.title} description={componentDetails.description} showCheckbox={false}>
 			<Button title="Exportar filtros" onClick={createConsoleTab} />
 		</ToolSection>
 	);
