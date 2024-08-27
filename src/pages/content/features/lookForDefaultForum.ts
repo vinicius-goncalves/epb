@@ -1,6 +1,6 @@
 import { getDefaultForumIndex } from '../../../common/ChromeExtensionUtils';
 import { waitUntil } from '../../../common/utils';
-import CommunityConsoleClasses from '../../../ts/enums/cc-classes.enum';
+import { CCClasses, CCElements } from '../../../ts/enums';
 import URLChangeEvent from '../events/url-change.event';
 import { debugConsole } from './debugConsole';
 
@@ -11,7 +11,7 @@ import { debugConsole } from './debugConsole';
 
 async function getEscalationMenu(): Promise<HTMLElement | undefined> {
 	const cbWaitUntil = () => {
-		const defaultForum = document.querySelector(CommunityConsoleClasses.ESCALATION_MENU_OPTIONS);
+		const defaultForum = document.querySelector(CCClasses.ESCALATION_MENU_OPTIONS);
 		if (!defaultForum || !defaultForum.classList.contains('forum-selection-label')) return false;
 
 		const wrapper = defaultForum.closest('.wrapper');
@@ -35,7 +35,7 @@ async function openForumsList() {
 
 async function getForumsOptions(): Promise<{ forum: HTMLElement; index: number }[]> {
 	await openForumsList();
-	const forumOptions = document.querySelectorAll(CommunityConsoleClasses.INDIVIDUAL_FORUM_OPTION);
+	const forumOptions = document.querySelectorAll(CCElements.INDIVIDUAL_FORUM_OPTION);
 	const forumOptionsReversed = [...forumOptions].map((forum, index) => ({ forum, index })).reverse();
 	return forumOptionsReversed as { forum: HTMLElement; index: number }[];
 }
