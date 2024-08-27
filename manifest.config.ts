@@ -1,18 +1,19 @@
 import { defineManifest, ManifestV3Export } from '@crxjs/vite-plugin';
 import _manifest from './manifest.json';
 
-export function _defineContentScripts(paths: string[], options?: { relativePath?: string }) {
-	return options ? paths.map((path) => `${options.relativePath}/${path}`) : paths;
+export function _defineContentScripts(paths: (() => string[]) | string[], relativePath?: string) {
+	const resolvedPaths = typeof paths === 'function' ? paths() : paths;
+	return relativePath ? resolvedPaths.map((path) => `${relativePath}/${path}`) : resolvedPaths;
 }
 
-const featuresContentScripts = _defineContentScripts(['piiHeightLimit.feature.ts'], {
-	relativePath: 'src/pages/content/features',
-});
+const featuresContentScripts = _defineContentScripts(['piiHeightLimit.feature.ts'], 'src/pages/content/features');
 
-const content_scripts: Partial<ManifestV3Export> = {
-	content_scripts: [{ js: featuresContentScripts, matches: ['support.google.com/*'] }],
-};
-
-const manifest = defineManifest({ ..._manifest, ...content_scripts } as ManifestV3Export);
+const manifest = defineManifest({
+	..._manifest,
+	content_scripts: [
+		..._manifest.content_scripts,
+		{ js: featuresContentScripts, matches: ['https://support.google.com/*'], world: 'MAIN' },
+	],
+} as ManifestV3Export);
 
 export default manifest;
