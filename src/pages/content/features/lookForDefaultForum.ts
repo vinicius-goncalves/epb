@@ -2,6 +2,7 @@ import { getDefaultForumIndex } from '../../../common/ChromeExtensionUtils';
 import { waitUntil } from '../../../common/utils';
 import CommunityConsoleClasses from '../../../ts/enums/cc-classes.enum';
 import URLChangeEvent from '../events/url-change.event';
+import { debugConsole } from './debugConsole';
 
 (() => {
 	const urlChangeEvent = new URLChangeEvent();
@@ -48,11 +49,10 @@ async function selectEscalationMenu() {
 }
 
 function handleWithDefaultForum() {
-	// getEscalationMenu();
 	selectEscalationMenu();
 }
 
 window.addEventListener('URLChanged', () => {
-	console.log('Initialized...');
+	debugConsole('URL change detected in "lookForDefaultForum" feature.');
 	handleWithDefaultForum();
 });
