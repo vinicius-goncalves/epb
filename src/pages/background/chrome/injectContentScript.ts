@@ -1,3 +1,5 @@
+import { debugConsole } from '../../content/features/debugConsole';
+
 const MAIN_GOOGLE_URL = 'https://support.google.com/*';
 
 async function injectContentScript(tabOptions?: chrome.tabs.QueryInfo) {
@@ -21,7 +23,7 @@ async function injectContentScript(tabOptions?: chrome.tabs.QueryInfo) {
 			target: { tabId: tab.id! },
 		});
 
-		console.info('[EBP] Content script was injected to %s', tab.url);
+		debugConsole(`Content script was injected to ${tab.url}`);
 	}
 }
 
