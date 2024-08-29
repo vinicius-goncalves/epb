@@ -1,7 +1,7 @@
 import { getDefaultForumIndex } from '../../../common/ChromeExtensionUtils';
 import { waitUntil } from '../../../common/utils';
 import { CCClasses, CCElements } from '../../../ts/enums';
-import URLChangeEvent from '../events/url-change.event';
+import URLChangeEvent from '../events/urlChangeEvent.event';
 import { debugConsole } from './debugConsole';
 
 interface Forum {
@@ -9,10 +9,10 @@ interface Forum {
 	index: number;
 }
 
-(() => {
-	const urlChangeEvent = new URLChangeEvent();
-	urlChangeEvent.startEvent();
-})();
+// (() => {
+// 	const urlChangeEvent = new URLChangeEvent();
+// 	urlChangeEvent.startEvent();
+// })();
 
 async function getEscalationMenu(): Promise<HTMLElement> {
 	const fn = () => {
@@ -61,7 +61,10 @@ function handleWithDefaultForum() {
 	selectEscalationMenu();
 }
 
-window.addEventListener('URLChanged', () => {
+const urlChangeEvent = new URLChangeEvent({ forceFirstInit: false });
+urlChangeEvent.start();
+
+urlChangeEvent.addEventListener('URLChanged', () => {
 	debugConsole('URL change detected in "lookForDefaultForum" feature.');
 	handleWithDefaultForum();
 });
