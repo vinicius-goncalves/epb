@@ -17,8 +17,7 @@
 		},
 		{
 			"js": ["src/common/DOMUtils/XHRInterceptor.js"],
-			"matches": ["https://support.google.com/*"],
-			"world": "MAIN"
+			"matches": ["https://support.google.com/*"]
 		}
 	],
 	"background": {
