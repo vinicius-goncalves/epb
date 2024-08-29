@@ -1,10 +1,11 @@
-import { UserPreferences } from '../../../common/classes/userPreferences/UserPreferences';
+import { UserPreferences } from '../../../common/classes/userPreferences';
 
 const preferences = new UserPreferences();
 
 export async function debugConsole(message: string, { epbPrefix = true }: { epbPrefix?: boolean } = {}) {
-	const { isPreferenceActive } = await preferences.getPreference('showDebugInformation');
-	if (!isPreferenceActive) return;
+	const preference = await preferences.getPreference('showDebugInformation');
 
-	console.log(`${epbPrefix ? '[EPB]' : ''} ${message}`);
+	if (preference.isPreferenceActive) {
+		console.log(`${epbPrefix ? '[EPB]' : ''} ${message}`);
+	}
 }

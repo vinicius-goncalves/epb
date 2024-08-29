@@ -10,5 +10,5 @@ export const defaultPreferences = {
 export type Preferences = typeof defaultPreferences;
 
 export { AbstractUserPreferences } from './AbstractUserPreferences';
-export { ChromeStorageUserPreferences } from './ChromeStorageUserPreferences';
+export { LocalUserPreferences } from './LocalUserPreferences';
 export { UserPreferences } from './UserPreferences';
