@@ -1,16 +1,17 @@
 import { isArrayBuffer, isValidJSON } from '../../common/utils';
+import { debugConsole } from '../../pages/content/features/debugConsole';
 import { triggerEvent } from './triggerEvent';
 
 const $XHR = window.XMLHttpRequest;
 const $XHRPrototype = $XHR.prototype;
 
 (() => {
-	console.log('[EPB] Initializing XHR Interceptor.');
-
 	const _open = $XHRPrototype.open;
 	const _send = $XHRPrototype.send;
 
 	try {
+		debugConsole('Initialized XHR Interceptor.');
+
 		$XHRPrototype.open = function () {
 			return _open.apply(this, arguments);
 		};
