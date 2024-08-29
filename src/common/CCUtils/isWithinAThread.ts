@@ -1,4 +1,4 @@
-import { UserPreferences } from '../classes/userPreferences/UserPreferences';
+import { UserPreferences } from '../classes/userPreferences';
 
 const preferences = new UserPreferences();
 
