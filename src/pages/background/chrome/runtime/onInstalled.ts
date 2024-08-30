@@ -1,5 +1,4 @@
 import injectContentScript from '../injectContentScript';
-import '../userPreferences';
 
 chrome.runtime.onInstalled.addListener(async () => {
 	console.info('[PEs] Script initialized.');
