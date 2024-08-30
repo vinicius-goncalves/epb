@@ -9,11 +9,14 @@ Ferramentas e melhorias para sistemas do Google.
 -   [Como configurar?](#settings)
 -   [Tabela de recursos](#features)
 -   [Funcionalidades explicadas](#features-description)
+-   [Políticas de privacidade](#privacity-policies)
 
 <div id="introduction">
   <h2>Introdução à EPB</h2>
-  <p>Seja muito bem vind@ ao guia da extensão <strong>EPB</strong>. A EPB é uma extensão criada com o foco de adicionar mais recursos e auxiliando na produtividade no sistema de gerenciamento de fóruns do Google. Neste guia, iremos cobrir as funcionalidades <strong>disponíveis</strong> na extensão. </p>
-  <small>Alguns dos recursos não estão disponíveis no momento, pois estão sendo desenvolvidos.</small>
+  <p>Seja muito bem vind@ ao guia da extensão <strong>EPB</strong>. A EPB, um acrônimo para Extensão para PEs Brasileiros, é uma extensão criada com o foco de adicionar mais recursos e auxiliando na produtividade no sistema de gerenciamento de fóruns do Google. Neste guia, será cobrido todas as funcionalidades <strong>disponíveis</strong> na extensão. </p>
+
+> Alguns dos recursos não estão disponíveis no momento, pois estão sendo desenvolvidos.</mark>
+
 </div>
 
 <div id="how-to-install">
@@ -86,4 +89,15 @@ Ferramentas e melhorias para sistemas do Google.
       <p>As funcionalidades desta seção são auto explicativas. Enquanto a ferramenta de "Exportar filtros" exporta os filtros de sua conta, a ferramenta de "Exportar respostas automáticas" irá exportar as respostas automáticas de sua conta. Essa segunda ferramenta pode haver uma pequena queda de desempenho em questões de milissegundos ou quase nula, algo imperceptível, quando o processo se inicia.</p>
     </div>
   </div>
+</div>
+
+<div id="privacity-policies">
+  <h2>Políticas de privacidade</h2>
+
+Por si só, a EPB não coleta dados ou solicita informações pessoais como nome, emails, senhas, localização, histórico ou outros dados sensíveis - entretanto, a extensão utiliza interceptores em requisições HTTPs, como o [XHRInterceptor](https://github.com/vinicius-goncalves/epb/blob/main/src/pages/common/DOMUtils/XHRInterceptor.js), ou então, utiliza dados que vem dos próprios fóruns do Google para recursos como melhorar a visualização de perfis ou fazer exportação de dados como os seus filtros. Mais uma vez, reforçando, são dados que estão disponíveis nos próprios fóruns do Google.
+
+Ao instalar a extensão, você concorda com as políticas de privacidade da extensão, permitindo-a que esses dados possam ser usados para a construção da extensão. Você também concorda com as políticas de privacidade da [Chrome Web Store](https://developer.chrome.com/docs/webstore/program-policies/privacy/).
+
+> ℹ️ Atenção: A extensão é compatível somente com navegadores baseados no Chromium, sendo os principais: Chrome, Edge e Opera.
+
 </div>
