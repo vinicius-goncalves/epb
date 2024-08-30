@@ -6,6 +6,7 @@ const userPreferences = new UserPreferences();
 
 async function initFeatures() {
 	const preferences = await userPreferences.getPreferences();
+
 	for (const [preference, isPreferenceActive] of Object.entries(preferences)) {
 		if (!isPreferenceActive) continue;
 		const path = findWebResourcePath(`${preference}.feature`)!;
