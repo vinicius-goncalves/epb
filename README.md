@@ -94,7 +94,7 @@ Ferramentas e melhorias para sistemas do Google.
 <div id="privacity-policies">
   <h2>Políticas de privacidade</h2>
 
-Por si só, a EPB não coleta dados ou solicita informações pessoais como nome, emails, senhas, localização, histórico ou outros dados sensíveis - entretanto, a extensão utiliza interceptores em requisições HTTPs, como o [XHRInterceptor](https://github.com/vinicius-goncalves/epb/blob/main/src/pages/common/DOMUtils/XHRInterceptor.js), ou então, utiliza dados que vem dos próprios fóruns do Google para recursos como melhorar a visualização de perfis ou fazer exportação de dados como os seus filtros. Mais uma vez, reforçando, são dados que estão disponíveis nos próprios fóruns do Google.
+Por si só, a EPB não coleta dados ou solicita informações pessoais como nome, emails, senhas, localização, histórico ou outros dados sensíveis - entretanto, a extensão utiliza interceptores em requisições HTTPs, como o [XHRInterceptor](https://github.com/vinicius-goncalves/epb/blob/main/src/common/DOMUtils/XHRInterceptor.js), ou então, utiliza dados que vem dos próprios fóruns do Google para recursos como melhorar a visualização de perfis ou fazer exportação de dados como os seus filtros. Mais uma vez, reforçando, são dados que estão disponíveis nos próprios fóruns do Google.
 
 Ao instalar a extensão, você concorda com as políticas de privacidade da extensão, permitindo-a que esses dados possam ser usados para a construção da extensão. Você também concorda com as políticas de privacidade da [Chrome Web Store](https://developer.chrome.com/docs/webstore/program-policies/privacy/).
 
