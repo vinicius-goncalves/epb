@@ -1,7 +1,6 @@
+import { Actions } from '../../ts/enums';
+
 export async function getEPBResponses() {
-	return chrome.runtime
-		.sendMessage({ action: 'get-epb-responses' })
-		.then((res) => {
-			return res['epb-responses'];
-		});
+	const res = await chrome.runtime.sendMessage({ action: Actions.GET_EPB_RESPONSE });
+	if ('epb_responses' in res) return res.epb_responses;
 }
