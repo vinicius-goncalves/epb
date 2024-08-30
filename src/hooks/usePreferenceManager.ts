@@ -1,27 +1,25 @@
 import { useEffect, useState } from 'react';
-import {
-	defaultPreferences,
-	getUserPreferences,
-	updateUserPreferences,
-} from '../pages/background/chrome/userPreferences';
+import { Preferences, UserPreferences } from '../common/classes/userPreferences';
 
-export function usePreferenceManager(preferenceKey: keyof typeof defaultPreferences) {
+const userPreferences = new UserPreferences();
+
+export function usePreferenceManager(preferenceKey: keyof Preferences) {
 	const [preference, setPreference] = useState<{ isPreferenceActive: boolean } | null>(null);
 
 	const togglePreference = () => {
-		getUserPreferences().then((preferences) => {
+		userPreferences.getPreferences().then((preferences) => {
 			const oldPreferenceValue = preferences[preferenceKey] as boolean;
 			const newPreferenceValue = !oldPreferenceValue;
 
-			updateUserPreferences(preferenceKey, newPreferenceValue);
-			setPreference((prevState) => ({ ...prevState, isPreferenceActive: newPreferenceValue }));
+			userPreferences.updatePreferences(preferenceKey, newPreferenceValue);
+			setPreference({ isPreferenceActive: newPreferenceValue });
 		});
 	};
 
 	useEffect(() => {
-		getUserPreferences().then((preferences) => {
-			const isActive = preferences[preferenceKey];
-			setPreference((prevState) => ({ ...prevState, isPreferenceActive: isActive }));
+		userPreferences.getPreferences().then((preferences) => {
+			const isPreferenceActive = preferences[preferenceKey];
+			setPreference({ isPreferenceActive });
 		});
 	}, [preferenceKey]);
 
