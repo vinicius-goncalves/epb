@@ -1,7 +1,7 @@
 import { Entries } from '../../../ts/types/Entries.type';
 import { AbstractUserPreferences, defaultPreferences, Preferences } from './index';
 
-const storage = chrome.storage.sync;
+const storage = chrome.storage?.sync;
 
 export class UserPreferences extends AbstractUserPreferences {
 	constructor() {
@@ -11,7 +11,7 @@ export class UserPreferences extends AbstractUserPreferences {
 	async savePreferences(preferences: Preferences): Promise<unknown> {
 		try {
 			await storage.set({ preferences });
-			return preferences;
+			return null;
 		} catch (err) {
 			console.log(err);
 		}
@@ -32,7 +32,7 @@ export class UserPreferences extends AbstractUserPreferences {
 
 		if (!preferences) {
 			await storage.set(defaultPreferences);
-			return preferences;
+			return defaultPreferences;
 		}
 
 		return preferences;
@@ -55,6 +55,7 @@ export class UserPreferences extends AbstractUserPreferences {
 	async updatePreferences(preferenceKey: keyof Preferences, newValue: boolean) {
 		const currPreferences = await this.getPreferences();
 		const newPreferences = { ...currPreferences, [preferenceKey]: newValue } as Preferences;
+		console.log(newPreferences);
 
 		this.savePreferences(newPreferences);
 	}

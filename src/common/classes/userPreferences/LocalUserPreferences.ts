@@ -2,15 +2,8 @@ import { Preferences } from '.';
 import { AbstractUserPreferences } from './AbstractUserPreferences';
 
 export class LocalUserPreferences extends AbstractUserPreferences {
-	async loadStoredPreferences(): Promise<void> {
-		const { preferences } = await chrome.storage.sync.get('preferences');
-		localStorage.setItem('epb-user-preferences', JSON.stringify(preferences));
-	}
-
 	async getPreferences(): Promise<unknown> {
-		await this.loadStoredPreferences();
-
-		const req = localStorage.getItem('epb-user-preferences');
+		const req = globalThis.localStorage?.getItem('epb_user_preferences');
 		if (typeof req === 'string') {
 			try {
 				const preferences = JSON.parse(req);
@@ -23,11 +16,7 @@ export class LocalUserPreferences extends AbstractUserPreferences {
 
 	async getPreference(preference: keyof Preferences): Promise<unknown> {
 		const preferences = (await this.getPreferences()) as Preferences;
-		return preferences[preference];
+		const preferenceFound = preferences[preference];
+		return { isPreferenceActive: preferenceFound };
 	}
 }
-
-const a = new LocalUserPreferences();
-a.getPreferences().then((res) => {
-	console.log(res);
-});
