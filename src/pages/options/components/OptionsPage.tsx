@@ -5,8 +5,8 @@ import ToolSectionWrapper from './tool-section/ToolSectionWrapper';
 
 import { usePreferenceManager } from '../../../hooks';
 import ShowDebugInformation from './options/dev/ShowDebugInformation';
-import ProfileEnhancementOption from './options/enhancements/ProfileEnhancementOption';
-import ThreadEnhancementOption from './options/enhancements/ThreadEnhancementOption';
+import ThreadEnhancementOption from './options/enhancements/ProfileEnhancementOption';
+import ProfileEnhancementOption from './options/enhancements/ThreadEnhancementOption';
 import PIIHeightLimitOption from './options/fixes/PIIHeightLimitOption';
 import DefaultForumSelectOption from './options/functions/DefaultForumSelectOption';
 import ThreadDetectionOption from './options/functions/ThreadDetectionOption';
