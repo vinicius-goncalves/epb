@@ -15,8 +15,8 @@ function getContainer(container?: string | Element): Element | null {
 	return document.querySelector(container!);
 }
 
-function getAppendTarget(appendWhere: string = '.material-content') {
-	return document.querySelector(appendWhere) as HTMLElement;
+function getParent(parent?: string) {
+	return parent ? (document.querySelector(parent) as HTMLElement) : undefined;
 }
 
 function unmountWhenChange(root: Root) {
@@ -37,20 +37,20 @@ export function initComponent(
 	component: React.ReactNode,
 	options: Partial<{
 		container: string | HTMLElement;
-		appendWhere: string;
+		parent: string;
 		topComponent: boolean;
 		autoUnmount: boolean;
 	}> = { autoUnmount: true },
 ) {
 	const container = getContainer(options?.container) || createContainer();
+	const parentTarget = getParent(options.parent);
 
-	const appendTarget = getAppendTarget(options.appendWhere);
-	const ecShell = options.topComponent ? appendTarget.closest('ec-shell') : null;
-
-	if (ecShell) {
-		ecShell.prepend(container);
-	} else {
-		appendTarget.appendChild(container);
+	if (options.parent && parentTarget) {
+		if (options.topComponent) {
+			parentTarget?.prepend(container);
+		} else {
+			parentTarget.appendChild(container);
+		}
 	}
 
 	const root = createRoot(container);
