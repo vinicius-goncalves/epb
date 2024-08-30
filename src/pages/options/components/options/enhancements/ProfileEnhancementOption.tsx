@@ -6,8 +6,9 @@ function ProfileEnhancementOption(): JSX.Element {
 
 	return (
 		<ToolSection
-			name="Melhorar visualização no nome de usuários em threads**"
-			description="Ativando essa opção, será corrigido espaçamento no nome de usuários e encurtar textos como &#34;Usuário que fez a postagem original&#34; apenas para &#34;OP&#34;"
+			name="Aprimorar visualização de perfil"
+			description="Os perfis (/user | /profile) serão aprimorados com ainda mais visualizações sobre os
+            vídeos postados, guias criados e outros detalhes sobre um perfil."
 			checked={isPreferenceActive}
 			updateCheckboxValue={togglePreference}></ToolSection>
 	);
