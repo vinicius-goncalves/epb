@@ -1,36 +1,38 @@
+import { UserPreferences } from '../../../../common/classes/userPreferences';
 import { Actions } from '../../../../ts/enums';
-import { getUserPreferences } from '../userPreferences';
 
 type MsgParam =
 	| { action: Actions | string; data: never }
-	| { action: 'video-details' | 'epb-response'; data?: unknown };
+	| { action: 'video-details' | Actions.GET_EPB_RESPONSE; data?: unknown };
+
+const syncStorage = chrome.storage.sync;
+const sessionStorage = chrome.storage.session;
+const userPreferences = new UserPreferences();
 
 chrome.runtime.onMessage.addListener((message: MsgParam, _s, sendResponse) => {
 	if (message.action === Actions.GET_DEFAULT_FORUM) {
-		chrome.storage.sync.get('default_forum').then((defaultForum) => {
+		syncStorage.get('default_forum').then((defaultForum) => {
 			sendResponse(defaultForum ? defaultForum : 0);
 		});
 	}
 
-	if (message.action === 'epb-response') {
-		chrome.storage.session.get('epb-responses').then(({ ['epb-responses']: responses }) => {
-			const prevResponses = Array.isArray(responses) ? responses : [];
+	if (message.action === Actions.EPB_RESPONSE) {
+		sessionStorage.get('epb_responses').then(({ epb_responses }) => {
+			const prevResponses = Array.isArray(epb_responses) ? epb_responses : [];
 			const nextResponses = [...prevResponses, message.data];
 
-			chrome.storage.session.set({
-				'epb-responses': nextResponses,
-			});
+			sessionStorage.set({ epb_responses: nextResponses });
 		});
 	}
 
-	if (message.action === 'get-epb-responses') {
-		chrome.storage.session.get('epb-responses').then((res) => {
+	if (message.action === Actions.GET_EPB_RESPONSE) {
+		chrome.storage.session.get('epb_responses').then((res) => {
 			sendResponse(res);
 		});
 	}
 
-	if (message.action === 'get-user-preferences') {
-		getUserPreferences().then((res) => {
+	if (message.action === Actions.GET_USER_PREFERENCES) {
+		userPreferences.getPreferences().then((res) => {
 			sendResponse(res);
 		});
 	}
