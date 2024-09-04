@@ -21,7 +21,9 @@ Ferramentas e melhorias para sistemas do Google.
 
 <div id="how-to-install">
   <h2>Como instalar a extensão?</h2>
-  <p>A instalação da extensão é muito simples, basta acessar a página da extensão na loja de extensões do Google Chrome [https://epb.vinicius-goncalves.com/] e clicar em "Instalar", após isso, ela será instalada e você poderá fixar junto com suas outras extensões sem maiores problemas.</p>
+	
+  A instalação da extensão é muito simples, basta acessar a [página da extensão na loja de extensões do Google Chrome](https://epb.vinicius-goncalves.com/) e clicar em "Instalar", após isso, ela será instalada e você poderá fixar junto com suas outras extensões sem maiores problemas.
+	
 </div>
 
 <div id="settings">
